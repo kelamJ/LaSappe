@@ -1,0 +1,48 @@
+
+<section class="footer">
+    <div class="footer-row">
+        <div class="footer-col">
+            <h4>Besoin d'aide ?</h4>
+            <ul class="links">
+                <li><a href="#">A-propos</a></li>
+                <li><a href="#">Foire aux Questions</a></li>
+                <li><a href="#">Nos Services</a></li>
+                <li><a href="#">Nous Contacter</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Explorez</h4>
+            <ul class="links">
+                <li><a href="{{ path('accueil') }}">Accueil</a></li>
+                <li><a href="{{ path('produit_index') }}">Produits</a></li>
+                <li><a href="{{ path('profil') }}">Profil</a></li>
+                <li><a href="{{ path('cart_index') }}">Panier de commande</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Légal</h4>
+            <ul class="links">
+                <li><a href="#">Pays : France</a></li>
+                <li><a href="#">Politique de confidentialité et cookies</a></li>
+                <li><a href="#">Sécurité</a></li>
+                <li><a href="#">Informations sur la société</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Inscrivez-vous</h4>
+            <p>
+                Inscrivez-vous sur notre site pour être identifié et accéder à la gestion de votre profil et de votre panier.
+            </p>
+                <button type="button" class="button btn btn-sm mb-3"><a href="{{ path('app_login') }}">S'inscrire</a></button>
+            <div class="icons">
+                <i class="fa-brands fa-facebook-f bx-sm"></i>
+                <i class="fa-brands fa-twitter bx-sm"></i>
+                <i class="fa-brands fa-linkedin bx-sm"></i>
+                <i class="fa-brands fa-github bx-sm"></i>
+            </div>
+        </div>
+    </div>
+</section>

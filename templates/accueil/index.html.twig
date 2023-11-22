@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+    {% for categorie in categories %}
+    <div class="image-container" style="position: relative; width: 100%;">
+        <img class="card-img-top card-image" src="/assets/uploads/categories/{{ categorie.catImage }}">
+        <h1 class="hover-effect" style="position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); text-align: center; text-transform: uppercase;">
+            <a style="color: white;" href="{{ path('app_categories', { categorie: categorie.id})}}">{{ categorie.catNom }}</a></h1>
+    </div>
+    {% endfor %}
+
+{% endblock %}
