@@ -36,7 +36,7 @@ class CategorieFixtures extends Fixture
         $cat1 = new Categorie();
         $cat1->setCatNom('Veste homme')
             ->setCatDescription('Vestes pour les hommes')
-            ->setCatImage('vesteHomme.jpg')
+            ->setCatImage('vesteHomme.png')
             ->setParent($mainCat1);
         $manager->persist($cat1);
         $this->addReference('vesteH' , $cat1);
@@ -44,7 +44,7 @@ class CategorieFixtures extends Fixture
         $cat2 = new Categorie();
         $cat2->setCatNom('Veste femme')
             ->setCatDescription('Vestes pour les femme')
-            ->setCatImage('vesteFemme.jpg')
+            ->setCatImage('vesteFemme.png')
             ->setParent($mainCat2);
         $manager->persist($cat2);
         $this->addReference('vesteF' , $cat2);
@@ -52,7 +52,7 @@ class CategorieFixtures extends Fixture
         $cat3 = new Categorie();
         $cat3->setCatNom('Pantalon homme')
             ->setCatDescription('Pantalons pour les hommes')
-            ->setCatImage('basHomme.jpg')
+            ->setCatImage('pantalonHomme.png')
             ->setParent($mainCat1);
         $manager->persist($cat3);
         $this->addReference('pantH' , $cat3);
@@ -61,7 +61,7 @@ class CategorieFixtures extends Fixture
         $cat4 = new Categorie();
         $cat4->setCatNom('Pantalon femme')
             ->setCatDescription('Pantalons pour les femmes')
-            ->setCatImage('basFemme.jpg')
+            ->setCatImage('pantalonFemme.png')
             ->setParent($mainCat2);
         $manager->persist($cat4);
         $this->addReference('pantF' , $cat4);
@@ -69,7 +69,7 @@ class CategorieFixtures extends Fixture
         $cat5 = new Categorie();
         $cat5->setCatNom('T-shirt homme')
             ->setCatDescription('T-shirt pour les hommes')
-            ->setCatImage('shirtHomme.jpg')
+            ->setCatImage('tshirtHomme.png')
             ->setParent($mainCat1);
         $manager->persist($cat5);
         $this->addReference('tshirtH' , $cat5);
@@ -77,7 +77,7 @@ class CategorieFixtures extends Fixture
         $cat6 = new Categorie();
         $cat6->setCatNom('T-shirt femme')
             ->setCatDescription('T-shirt pour les femmes')
-            ->setCatImage('shirtFemme.jpg')
+            ->setCatImage('tshirtFemme.png')
             ->setParent($mainCat2);
         $manager->persist($cat6);
         $this->addReference('tshirtF' , $cat6);

@@ -12,7 +12,7 @@ body {
     padding-top: 5rem;
     min-height: 100vh;
     background-size: cover;
-    background: radial-gradient(circle at center, #EED9C4 , #EDC9AF);
+    background: radial-gradient(circle at center, #4b3525 , #4f3826);
     /*background: url('image/bgWhite.jpg') repeat center;*/
 }
 
@@ -24,7 +24,7 @@ body {
 }
 
 .hover-effect:hover {
-    font-size: 3.5em; /* Taille de police agrandie au survol */
+    font-size: 4em; /* Taille de police agrandie au survol */
 }
 
 
@@ -77,23 +77,31 @@ body {
     left: 100%;
 }
 
-.logo {
-    font-size: 2rem;
+.gucci-title {
+    font-family: 'Gucci', sans-serif; /* Utilisez la police de caractères Gucci si disponible, sinon une police similaire */
+    font-size: 3rem;
+    font-weight: bold;
     color: #fff;
-    text-decoration: none;
-    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-left: 415px;
+    display: flex;
+    justify-content: center;
 }
 
+.gucci-title:hover {
+    color: #ffcc88;
+}
 .navbar-css a {
     font-size: 1.15rem;
-    color: #000000;
+    color: #fff;
     text-decoration: none;
     font-weight: 500;
     margin-left: 2.5rem;
 }
 
 .navbar-css a:hover {
-    color: #fff;
+    color: #ffcc88;
 }
 
 #check {
@@ -124,18 +132,15 @@ body {
     margin-bottom: 10rem !important;
 }
 
-
 .footer {
-    margin-top: 10px;
     position: relative;
     bottom: 0;
     left: 0;
     width: 100%;
     border-radius: 6px;
     padding: 10px;
-    background: rgba(0, 0, 0, .1);
-    backdrop-filter: blur(25px);
 }
+
 .footer .footer-row {
     display: flex;
     flex-wrap: wrap;
@@ -144,7 +149,7 @@ body {
     padding: 30px;
 }
 .footer-row .footer-col h4 {
-    color: #000000;
+    color: #ffcc88;
     font-size: 1.2rem;
     font-weight: 400;
 }
@@ -164,7 +169,7 @@ body {
 }
 .footer-col p {
     margin: 20px 0;
-    color: #756A5E;
+    color: #ffe9b8;
     max-width: 300px;
 }
 .footer-col form {
