@@ -24,10 +24,18 @@ body {
 }
 
 .hover-effect:hover {
-    font-size: 4em; /* Taille de police agrandie au survol */
+    font-size: 5em; /* Taille de police agrandie au survol */
 }
 
-
+/*Card neumorphism*/
+.neumorphism-1 {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    box-shadow:  5px 5px 26px #6c6c6c,
+    -5px -5px 26px #ffffff;
+}
 /*Flash Message*/
 .flash-message {
     color: #fff; /* Texte blanc */
