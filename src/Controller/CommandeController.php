@@ -23,7 +23,7 @@ class CommandeController extends AbstractController
 
         if ($panier === []){
             $this->addFlash('message', 'Votre panier est vide');
-            return $this->redirectToRoute('accueil');
+            return $this->redirectToRoute('catalogue');
         }
 
         // Le panier n'est pas vide, on crée la commande
@@ -60,6 +60,6 @@ class CommandeController extends AbstractController
         $session->remove('panier');
 
         $this->addFlash('message', '<div class="flash-message">Commande créée avec succès</div>');
-        return $this->redirectToRoute('accueil');
+        return $this->redirectToRoute('catalogue');
     }
 }

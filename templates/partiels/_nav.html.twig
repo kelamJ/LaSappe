@@ -6,11 +6,11 @@
         <i class='bx bx-menu' id="menu-icon"></i>
         <i class='bx bx-x'  id="close-icon"></i>
     </label>
-    <a href="{{ path('accueil') }}" class="gucci-title"><h2 style="text-transform: uppercase;"> LaSappe </h2></a>
+    <a href="{{ path('catalogue') }}" class="gucci-title"><h2 style="text-transform: uppercase;"> LaSappe </h2></a>
 
     <nav class="navbar-css">
-            <a href="{{ path('accueil') }}" style="">Catégories</a>
-            <a href="{{ path('produit_index') }}" style="">Produits</a>
+            <a href="{{ path('all_categories') }}" style="">Catégories</a>
+            <a href="{{ path('all_produits') }}" style="">Produits</a>
             <a href="#" style="">Contact</a>
             {% if app.user %}
                 <a href="{{ path('profil') }}"><i class='bx bx-user bx-sm' style=""></i></a>

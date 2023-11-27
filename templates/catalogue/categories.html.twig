@@ -9,9 +9,10 @@
             <a style="color: white;" href="#">{{categorie.catNom}}</a></h1>
         {% if (categorie.catNom == "Homme")  %}
                 <img class="card-img-top" src="/assets/uploads/categories/homme.jpg">
-            {% else %}
+            {% elseif (categorie.catNom == "Femme") %}
                 <img class="card-img-top" src="/assets/uploads/categories/femme.jpg">
         {% endif %}
+
         <div class="d-flex justify-content-center justify-content-around">
                 {% for souscategorie in categorie.categories %}
                     <div class="d-flex  justify-content-center neumorphism-1 ">
@@ -21,18 +22,14 @@
                                 <h5 class="card-title">{{souscategorie.catNom}}</h5>
                             </div>
                             <div class="d-flex justify-content-center">
-                                <a style="" href="{{ path('app_produits', { categorie: souscategorie.id})  }}" class="btn btn-primary">Go somewhere</a>
+                                <a style="" href="{{ path('app_produits', { categorie: souscategorie.id})  }}"><button type="button" class="button">Consulter</button></a>
                             </div>
                         </div>
             </div>
                 {% endfor %}
-
-        </div>
-
-        <div class="d-flex justify-content-center">
-
         </div>
     </div>
+
 
 
 

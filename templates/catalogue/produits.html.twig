@@ -5,18 +5,19 @@
 {% block body %}
     <div class="product-content">
         <div class="container">
+            <h2>{{ categorie.catNom }}</h2>
             <div class="d-flex justify-content-center align-items-center row row-cols-1 row-cols-md-3 mt-5">
-                {% for produits in produit %}
+                {% for produit in categorie.cat %}
                     <div class="bg-image hover-overlay ripple mt-5 card-anim" style="width: 20rem;--color: #fff" data-mdb-ripple-color="light">
                         <div class="card mt-3 mx-auto">
-                            <img class="card-img-top" src="{{ asset('assets/uploads/produits/') ~ produits.image }}" alt="Card image cap">
+                            <img class="card-img-top" src="{{ asset('assets/uploads/produits/') ~ produit.image }}" alt="Card image cap">
                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
 
                         </div>
                         <div class="card-body text-white rounded-bottom">
-                            <h4 class="card-title">{{ produits.proNom }}</h4>
+                            <h4 class="card-title">{{ produit.proNom }}</h4>
                             <p class="card-text"></p>
-                            <a href="{{ path('produit_details', {slug: produits.slug}) }}"><button type="button" class="button mb-3 btn-custom">Consulter</button></a>
+                            <a href="{{ path('details', {slug: produit.slug}) }}"><button type="button" class="button mb-3 btn-custom">Consulter</button></a>
                         </div>
                     </div>
                 {% endfor %}
