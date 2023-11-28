@@ -18,8 +18,8 @@
     </div>
 
     <div class="container col-sm-4 d-flex justify-content-center align-items-center" style="height: 50vh;">
-        <div class="card-body text-white rounded-7 mt-2 mb-2 border border-light">
-            <div class="form-group row">
+        <div class="card-body text-white rounded-7 mt-2 mb-2 border border-light d-flex justify-content-center">
+            <div class="form-group">
                 <h1 class="h2 mt-3 font-weight-normal "></h1>
                 <p>Vous n'avez pas encore de compte ? <br> <a style="text-decoration-line: underline; font-weight: bold;" class="" href="{{ path('app_register') }}">Inscrivez-Vous</a> </p>
                 <form method="post" class="center-card">
@@ -29,7 +29,7 @@
 
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                     <a href="{{ path('forgotten_password') }}">Mot de passe oublié ?</a>
-                    <button type="submit" class="button btn-custom mt-3 mb-3">Se connecter</button>
+                    <button type="submit" class="button">Connexion</button>
                 </form>
             </div>
         </div>
