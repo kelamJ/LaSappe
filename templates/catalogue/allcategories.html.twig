@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Catégories{% endblock %}
 
 {% block body %}
     <div class="container col-6">
@@ -8,10 +8,7 @@
             {% for allcategories in categoriesWithParent %}
                 <div class="d-flex  justify-content-center neumorphism-1 mb-5">
                     <div class="" style="">
-                        <img src="/assets/uploads/categories/{{ allcategories.catImage }}" style="width: 12em" class="card-img-top" alt="...">
-                        <div class="d-flex  justify-content-center">
-                            <h5 class="card-title">{{allcategories.catNom}}</h5>
-                        </div>
+                        <img src="/assets/uploads/categories/{{ allcategories.catImage }}" style="width: 5em" class="card-img-top ms-4" alt="...">
                         <div class="d-flex justify-content-center">
                             <a href="{{ path('app_produits', { categorie: allcategories.id})  }}"><button type="button" class="button">Consulter</button></a>
                         </div>

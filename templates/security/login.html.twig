@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="container col-sm-4 mt-5 d-flex justify-content-center align-items-center">
-        <div class="card-body text-white rounded-pill border border-light">
+        <div class="card-body text-white rounded-pill border border-dark">
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
@@ -18,7 +18,7 @@
     </div>
 
     <div class="container col-sm-4 d-flex justify-content-center align-items-center" style="height: 50vh;">
-        <div class="card-body text-white rounded-7 mt-2 mb-2 border border-light d-flex justify-content-center">
+        <div class="card-body rounded-7 mt-2 mb-2 border border-dark d-flex justify-content-center">
             <div class="form-group" style="padding: 20px">
                 <h3>Vous n'avez pas encore de compte ? <br> <a style="text-decoration-line: underline; font-weight: bold;" class="" href="{{ path('app_register') }}">Inscrivez-Vous</a> </h3>
                 <form method="post" class="center-card">

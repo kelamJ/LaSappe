@@ -9,7 +9,7 @@
 
 body {
     padding-top: 10rem;
-    background: linear-gradient(-45deg, #232526, #414345, #232526, #414345);
+    background: linear-gradient(-45deg,#FFEFBA, #FFFFFF, #FFEFBA, #FFFFFF);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
     height: 100vh;
@@ -28,56 +28,41 @@ body {
 }
 /*Effect Title Catégorie*/
 .hover-effect {
-    font-size: 3em;
+    font-size: 1.5em;
     transition: font-size 0.3s ease-in-out;
-    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
-
+    color: white;
+    box-sizing: border-box;
 }
 
 .hover-effect:hover {
-    font-size: 5em;
+    font-size: 2em;
+}
+
+.card-form img {
+    padding: 10px;
 }
 
 
 /*Couleur texte de la page détail produit*/
 .card-text {
-    color: #e0e0e0;
-    margin: 0;
+    color: #fff;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+    backdrop-filter: blur(20px);
 }
 
 /*Cadrde qui contient les images et le lien pour accéder aux catégorie femme et homme */
 .display-inline {
     display: flex;
-    justify-content: space-around;
 }
 
-.card-form {
-    box-sizing: border-box;
-    width: 50rem;
-    height: 33.5rem;
-    background: rgba(217, 217, 217, 0.58);
-    border: 1px solid white;
-    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
-    backdrop-filter: blur(6px);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.5s;
-    user-select: none;
-    font-weight: bolder;
-    color: white;
+/*Couleur du Tableau dans le panie r*/
+table {
+    border-color: #222222;
 }
-
-.card-title {
-    color: #e0e0e0;
-}
-
 /*Card neumorphism*/
 .neumorphism-1 {
-    height: 300px;
-    width: 300px;
+    height: 150px;
+    width: 150px;
     border-radius: 50%;
     background: #333536;
 }
@@ -320,7 +305,7 @@ a {
     font-family: 'Gucci', sans-serif; /* Utilisez la police de caractères Gucci si disponible, sinon une police similaire */
     font-size: 3rem;
     font-weight: bold;
-    color: #fff;
+    color: black;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-left: 415px;
@@ -329,18 +314,18 @@ a {
 }
 
 .gucci-title:hover {
-    color: #D7DDE8;
+    color: darkgrey;
 }
 .navbar-css a {
     font-size: 1.15rem;
-    color: #fff;
+    color: black;
     text-decoration: none;
     font-weight: 500;
     margin-left: 2.5rem;
 }
 
 .navbar-css a:hover {
-    color: #D7DDE8;
+    color: dimgrey;
 }
 
 #check {
@@ -377,7 +362,7 @@ a {
     left: 0;
     width: 100%;
     border-radius: 6px;
-    padding: 10px;
+    padding-top: 100px;
 }
 
 .footer .footer-row {
@@ -388,7 +373,7 @@ a {
     padding: 30px;
 }
 .footer-row .footer-col h4 {
-    color: #fff;
+    color: black;
     font-size: 1.2rem;
     font-weight: 400;
 }
@@ -401,14 +386,14 @@ a {
 }
 .footer-col .links li a {
     text-decoration: none;
-    color: #D7DDE8;
+    color: black;
 }
 .footer-col .links li a:hover {
     color: #756A5E;
 }
 .footer-col p {
     margin: 20px 0;
-    color: #ffffff;
+    color: black;
     max-width: 300px;
 }
 .footer-col form {
