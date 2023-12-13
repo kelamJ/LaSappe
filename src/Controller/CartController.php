@@ -32,7 +32,7 @@ class CartController extends AbstractController
             $total += $produit->getPrixVente() * $quantite;
         }
 
-        return $this->render('panier/update.html.twig', compact('data', 'total'));
+        return $this->render('panier/index.html.twig', compact('data', 'total'));
     }
 
 
