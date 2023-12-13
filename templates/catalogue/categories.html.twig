@@ -8,16 +8,16 @@
         <h1 class="hover-effect" style="position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); text-align: center; text-transform: uppercase;">
             <a style="color: white;" href="#">{{categorie.catNom}}</a></h1>
         {% if (categorie.catNom == "Homme")  %}
-                <img class="card-img-top" src="/assets/uploads/categories/homme.jpg">
+                <img class="card-img-top" src="/uploads/categories/homme.jpg">
             {% elseif (categorie.catNom == "Femme") %}
-                <img class="card-img-top" src="/assets/uploads/categories/femme.jpg">
+                <img class="card-img-top" src="/uploads/categories/femme.jpg">
         {% endif %}
 
         <div class="d-flex justify-content-center justify-content-around">
                 {% for souscategorie in categorie.categories %}
                     <div class="d-flex  justify-content-center neumorphism-1 ">
                         <div class="" style="">
-                            <img src="/assets/uploads/categories/{{ souscategorie.catImage }}" style="width: 12em" class="card-img-top" alt="...">
+                            <img src="/uploads/categories/{{ souscategorie.catImage }}" style="width: 12em" class="card-img-top" alt="...">
                             <div class="d-flex  justify-content-center">
                                 <h5 class="card-title">{{souscategorie.catNom}}</h5>
                             </div>

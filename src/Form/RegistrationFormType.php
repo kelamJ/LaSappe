@@ -20,7 +20,7 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email', EmailType::class,[
                 'attr' => [
-                    'style' => 'background: #551e2e; border-radius: 15px;',
+                    'style' => 'background: #fff; border-radius: 15px;',
                     'class' => 'form-control place-color',
                     'placeholder' => 'Email'
     ]

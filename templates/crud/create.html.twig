@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'une catégorie{% endblock %}
+
+{% block body %}
+    <h1 style="text-align: center">Création d'une catégorie</h1>
+
+    <div class="container" style="display: flex; justify-content: center;">
+
+        {{ form_start(form) }}
+        {{ form_row(form.cat_nom, {'label': false}) }}
+        {{ form_row(form.cat_description, {'label': false}) }}
+        {{ form_row(form.cat_image, {'label': false}) }}
+        {{ form_row(form.parent, {'label': false}) }}
+        {{ form_row(form._token) }}
+
+        <button class="button" style="width: 10rem" type="submit">Créer</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

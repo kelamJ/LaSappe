@@ -7,16 +7,20 @@ use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
+
+//API
+use ApiPlatform\Metadata\ApiResource;
+
 
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
+#[ApiResource]
 class Categorie
 {
     use SlugTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+private ?int $id = null;
 
     #[ORM\Column(length: 255)]
     private ?string $cat_nom = null;

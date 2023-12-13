@@ -9,7 +9,7 @@
 
 body {
     padding-top: 10rem;
-    background: linear-gradient(-45deg,#FFEFBA, #FFFFFF, #FFEFBA, #FFFFFF);
+    background: linear-gradient(-45deg,#757F9A, #D7DDE8, #757F9A, #D7DDE8);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
     height: 100vh;
@@ -42,20 +42,74 @@ body {
     padding: 10px;
 }
 
-
+/*h1 position */
+.h1positionH {
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+}
+.h1positionF {
+    position: absolute;
+    top: 30%;
+    left: 84%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+}
+.h3positionF {
+    position: absolute;
+    top: 120%;
+    left: 76%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+}
+.h3positionH {
+    position: absolute;
+    top: 120%;
+    left: 22%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+}
 /*Couleur texte de la page détail produit*/
-.card-text {
+.card-text,
+.h1positionH,
+.h1positionF{
     color: #fff;
     padding: 0.2em 0.5em 0.2em 0.5em;
     backdrop-filter: blur(20px);
 }
 
-/*Cadrde qui contient les images et le lien pour accéder aux catégorie femme et homme */
+/*Card qui contient les images et le lien pour accéder aux catégorie femme et homme */
 .display-inline {
     display: flex;
 }
+/*Card AllProduits*/
+.pro-card {
+    width: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px;
+}
 
-/*Couleur du Tableau dans le panie r*/
+.pro-card img {
+    width: 100%;
+    height: auto;
+}
+
+.card-info {
+    padding: 20px;
+}
+
+.card-info h2 {
+    margin-top: 0;
+}
+
+.price {
+    color: #e44d26;
+    font-weight: bold;
+}
+/*Couleur du Tableau dans le panier*/
 table {
     border-color: #222222;
 }
@@ -314,7 +368,7 @@ a {
 }
 
 .gucci-title:hover {
-    color: darkgrey;
+    color: white;
 }
 .navbar-css a {
     font-size: 1.15rem;
@@ -325,7 +379,7 @@ a {
 }
 
 .navbar-css a:hover {
-    color: dimgrey;
+    color: white;
 }
 
 #check {
@@ -389,7 +443,7 @@ a {
     color: black;
 }
 .footer-col .links li a:hover {
-    color: #756A5E;
+    color: white;
 }
 .footer-col p {
     margin: 20px 0;
@@ -434,7 +488,7 @@ a {
     cursor: pointer;
 }
 .footer-col .icons i {
-    color: #756A5E;
+    color: black;
 }
 .footer-col .icons i:hover  {
     color: #fff;
@@ -488,6 +542,10 @@ a {
         /*background: #924051 !important;*/
     }
 
+    .gucci-title {
+        display: none ;
+    }
+
     .icons {
         display: inline-flex;
     }
@@ -536,5 +594,37 @@ a {
         opacity: 1;
         transition-delay: calc(.15s * var(--i));
     }
+    .h1positionF {
+        position: absolute;
+        top: 145%;
+    }
+
+}
+
+
+/* Adaptation pour les écrans de petite taille */
+@media (max-width: 768px) {
+    .display-inline {
+        flex-direction: column; /* Mettez les éléments en colonne sur les écrans plus petits */
+    }
+
+    .card-form {
+        margin-bottom: 20px; /* Ajoutez un espace entre les cartes */
+    }
+    .h1positionH,
+    .h1positionF,
+    .h3positionH,
+    .h3positionF {
+        position: static; /* Réinitialisez la position pour que les éléments suivent le flux normal du document */
+        top: auto;
+        left: auto;
+        transform: none;
+        text-align: center; /* Centrez le texte */
+    }
+
+    h3 {
+        margin-top: 10px; /* Ajoutez un espace entre l'image et le texte */
+    }
+
 }
 

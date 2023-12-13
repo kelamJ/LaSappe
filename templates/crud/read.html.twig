@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'Détails de la catégorie: ' ~ categorie.catNom }}
+{% endblock %}
+
+{% block body %}
+    <h1 style="text-align: center">Détails de la catégorie {{ categorie.catNom }}</h1>
+
+    <div class="container" style="display: flex; justify-content: center;">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th scope="row">ID</th>
+                <td>{{ categorie.id }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Nom</th>
+                <td>{{ categorie.catNom }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Description</th>
+                <td>{{ categorie.catDescription }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Image</th>
+                <td>
+                    {% if categorie.catImage %}
+                        <img src="/uploads/categories/{{ categorie.catImage }}" style="max-width: 200px;
+                        max-height: 200px;">
+                    {% else %}
+                        Aucune image disponible.
+                    {% endif %}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="display: flex; justify-content: center;">
+        <button style="width: 10rem" class="button"> <a style="color: white" href="{{ path('crud_delete', {'id':
+                categorie.id})
+            }}">Supprimer</a>
+            <button style="width: 10rem" class="button"> <a style="color: white" href="{{ path('crud_update', {'id':
+                    categorie.id})
+                }}">Mettre a jour</a>
+    </div>
+{% endblock %}

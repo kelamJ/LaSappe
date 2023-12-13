@@ -8,8 +8,8 @@
             {% for allcategories in categoriesWithParent %}
                 <div class="d-flex  justify-content-center neumorphism-1 mb-5">
                     <div class="" style="">
-                        <img src="/assets/uploads/categories/{{ allcategories.catImage }}" style="width: 5em" class="card-img-top ms-4" alt="...">
-                        <div class="d-flex justify-content-center">
+                        <img src="/uploads/categories/{{ allcategories.catImage }}" style="width: 5em" class="card-img-top ms-2" alt="...">
+                        <div class="d-flex justify-content-center mt-0">
                             <a href="{{ path('app_produits', { categorie: allcategories.id})  }}"><button type="button" class="button">Consulter</button></a>
                         </div>
                     </div>

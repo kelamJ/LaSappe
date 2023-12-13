@@ -3,21 +3,23 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <div class="container col-6">
-        <div class="d-flex justify-content-center justify-content-around flex-wrap">
-            {% for produits in produit %}
-                <div class="d-flex  justify-content-center neumorphism-1 mb-5">
-                    <div class="" style="">
-                        <img src="/assets/uploads/produits/{{ produits.image }}" style="width: 5em" class="card-img-top" alt="...">
-                        <div class="d-flex  justify-content-center">
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <a href="{{ path('details', {slug: produits.slug}) }}"><button type="button" class="button">Consulter</button></a>
-                        </div>
-                    </div>
+    <div class="row  ms-5  me-5">
+    {% for produits in produit %}
+        <div class="col-md-3">
+            <div class="pro-card">
+                <img src="/uploads/produits/{{ produits.image }}" style="width: 15em" class="card-img-top ms-2" alt="Product Image">
+                <div class="card-info">
+                    <h2>{{ produits.proNom }}</h2>
+                    <p>{{ produits.proDescription }}</p>
+                    <p class="price">{{ produits.prixVente }}</p>
+                    <a href="{{ path('details', {slug: produits.slug}) }}"><button type="button" class="button">Consulter</button></a>
                 </div>
-            {% endfor %}
+            </div>
         </div>
+        {% if loop.index % 4 == 0 %}
+            </div><div class="row">
+        {% endif %}
+    {% endfor %}
     </div>
 
 {% endblock %}
