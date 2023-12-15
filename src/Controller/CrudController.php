@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Categorie;
+use App\Entity\Produit;
 use App\Form\CategorieType;
+use App\Form\ProduitType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -22,7 +24,7 @@ class CrudController extends AbstractController
     }
 
     #[Route('/read/{id}', name: 'read')]
-    public function read(int $id): Response
+    public function readCat(int $id): Response
     {
         $repository = $this->entityManager->getRepository(Categorie::class);
         $categorie = $repository->find($id);
@@ -31,13 +33,13 @@ class CrudController extends AbstractController
             throw $this->createNotFoundException('La catégorie avec l\'ID ' . $id . ' n\'existe pas.');
         }
 
-        return $this->render('crud/read.html.twig', [
+        return $this->render('crud/cat/read.html.twig', [
             'categorie' => $categorie,
         ]);
     }
 
-    #[Route('/add', name: 'add')]
-    public function create(Request $request): Response
+    #[Route('/addCat', name: 'add')]
+    public function createCat(Request $request): Response
     {
         $categorie = new Categorie();
         $form = $this->createForm(CategorieType::class, $categorie);
@@ -65,13 +67,13 @@ class CrudController extends AbstractController
             return $this->redirectToRoute('crud_read', ['id' => $categorie->getId()]);
         }
 
-        return $this->render('crud/create.html.twig', [
+        return $this->render('crud/cat/create.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
     #[Route('/update/{id}', name: 'update')]
-    public function update(Request $request, int $id): Response
+    public function updateCat(Request $request, int $id): Response
     {
         $categorie = $this->entityManager->getRepository(Categorie::class)->find($id);
 
@@ -122,14 +124,14 @@ class CrudController extends AbstractController
             return $this->redirectToRoute('crud_read', ['id' => $categorie->getId()]);
         }
 
-        return $this->render('crud/update.html.twig', [
+        return $this->render('crud/cat/update.html.twig', [
             'form' => $form->createView(),
             'categorie' => $categorie,
         ]);
     }
 
     #[Route('/delete/{id}', name: 'delete')]
-    public function delete(Request $request, int $id): Response
+    public function deleteCat(Request $request, int $id): Response
     {
         $categorie = $this->entityManager->getRepository(Categorie::class)->find($id);
 
@@ -148,8 +150,60 @@ class CrudController extends AbstractController
             // appropriée.
         }
 
-        return $this->render('crud/delete.html.twig', [
+        return $this->render('crud/cat/delete.html.twig', [
             'categorie' => $categorie,
+        ]);
+    }
+
+    #[Route('/readPro/{id}', name: 'readPro')]
+    public function readPro(int $id): Response
+    {
+        $repository = $this->entityManager->getRepository(Produit::class);
+        $produit = $repository->find($id);
+
+        if (!$produit) {
+            throw $this->createNotFoundException('Le produit avec l\'ID ' . $id . ' n\'existe pas.');
+        }
+
+        return $this->render('crud/pro/read.html.twig', [
+            'produit' => $produit,
+        ]);
+    }
+
+    #[Route('/addPro', name: 'createPro')]
+    public function createPro(Request $request): Response
+    {
+        $produit = new Produit();
+        $form = $this->createForm(ProduitType::class, $produit);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form['image']->getData();
+
+            if ($imageFile) {
+                $newFilename = uniqid().'.'.$imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('produit_images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // Gérer l'exception si le déplacement du fichier échoue
+                }
+
+                $produit->setImage($newFilename);
+            }
+
+            $this->entityManager->persist($produit);
+            $this->entityManager->flush();
+
+            return $this->redirectToRoute('crud_readPro', ['id' => $produit->getId()]);
+        }
+
+        return $this->render('crud/pro/create.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 }

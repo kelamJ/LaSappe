@@ -16,7 +16,6 @@ use ApiPlatform\Metadata\ApiResource;
 #[ApiResource]
 class Categorie
 {
-    use SlugTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

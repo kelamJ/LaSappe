@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'une catégorie{% endblock %}
+
+{% block body %}
+    <h1 style="text-align: center">Créer un nouveau produit</h1>
+
+    <div class="container" style="display: flex; justify-content: center;">
+
+        {{ form_start(form) }}
+        {{ form_row(form.pro_nom, {'label': false}) }}
+        {{ form_row(form.pro_description, {'label': false}) }}
+        {{ form_row(form.pro_stock, {'label': false}) }}
+        {{ form_row(form.prix_achat, {'label': false}) }}
+        {{ form_row(form.prix_vente, {'label': false}) }}
+        {{ form_row(form.image, {'label': false}) }}
+{#        {{ form_row(form.slug, {'label': false}) }}#}
+        {{ form_row(form.is_active, {'label': 'Disponible ?'}) }}
+        {{ form_row(form.categorie, {'label': false}) }}
+        {{ form_row(form.fournisseur, {'label': false}) }}
+
+        <button class="button" type="submit">Créer</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

@@ -33,7 +33,7 @@ class CategorieType extends AbstractType
             ])
             ->add('cat_image', FileType::class,[
                 'attr' => [
-                    'style' => 'background: #fff; border-radius: 15px; margin-bottom: 10px;',
+                    'style' => 'background: #fff; border-radius: 15px; ',
                     'class' => 'form-control place-color',
                     'placeholder' => 'Image',
                     'mapped' => false,
@@ -42,7 +42,7 @@ class CategorieType extends AbstractType
             ])
             ->add('parent', EntityType::class,[
                 'attr' => [
-                    'style' => 'background: #fff; border-radius: 15px; margin-bottom: 10px;',
+                    'style' => 'background: #fff; border-radius: 15px;margin-top: 10px; margin-bottom: 10px;',
                     'class' => 'form-control place-color',
                 ],
                 'class' => Categorie::class,

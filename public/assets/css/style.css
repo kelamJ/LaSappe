@@ -26,6 +26,8 @@ body {
         background-position: 0% 50%;
     }
 }
+
+
 /*Effect Title Catégorie*/
 .hover-effect {
     font-size: 1.5em;
@@ -119,6 +121,14 @@ table {
     width: 150px;
     border-radius: 50%;
     background: #333536;
+}
+
+/*Tableau produit*/
+.tableauPro {
+    display: flex;
+    justify-content: center;
+    backdrop-filter: blur(2000px);
+    border: 1px solid black;
 }
 
 /*Boutons animer pour ajout panier*/

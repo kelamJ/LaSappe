@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du Produit{% endblock %}
+
+{% block body %}
+    <h1 style="text-align: center">Détails de la catégorie {{ produit.proNom }}</h1>
+
+    <div class="container tableauPro">
+        <table style="width: 50rem" class="table">
+            <tbody>
+            <tr>
+                <th scope="row">ID</th>
+                <td>{{ produit.id }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Nom</th>
+                <td>{{ produit.proNom }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Description</th>
+                <td>{{ produit.proDescription }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Stock</th>
+                <td>{{ produit.proStock }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Prix achat</th>
+                <td>{{ produit.prixAchat }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Prix vente</th>
+                <td>{{ produit.prixVente }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Statut</th>
+                <td>{{ produit.isActive ? 'Actif' : 'Inactif' }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Catégorie</th>
+                <td>{{ produit.categorie.catNom }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Fournisseur</th>
+                <td>{{ produit.fournisseur.nom }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <tr>
+            <th scope="row">Image</th>
+            <td>
+                {% if produit.image %}
+                    <img style="width: 30rem" src="/uploads/produits/{{ produit.image }}">
+                {% else %}
+                    Aucune image disponible.
+                {% endif %}
+            </td>
+        </tr>
+    </div>
+
+{#    <a href="{{ path('crud_updatePro', { 'id': produit.id }) }}">Modifier le produit</a>#}
+{#    <a href="{{ path('crud_deletePro', { 'id': produit.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')">Supprimer le produit</a>#}
+    <button class="button">
+        <a href="{{ path('catalogue') }}">Retour</a>
+    </button>
+{% endblock %}
