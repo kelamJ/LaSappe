@@ -10,10 +10,13 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\GreaterThan;
 
 class ProduitType extends AbstractType
 {
@@ -34,21 +37,35 @@ class ProduitType extends AbstractType
                     'placeholder' => 'Description'
                 ]
             ])
-            ->add('pro_stock', NumberType::class, [
+            ->add('pro_stock', IntegerType::class, [
                 'attr' => [
                     'style' => 'background: #fff; border-radius: 15px;',
                     'class' => 'form-control place-color',
                     'placeholder' => 'Stock'
                 ]
             ])
-            ->add('prix_achat', NumberType::class, [
+            ->add('prix_achat', MoneyType::class, [
+                'currency' => false,
+                'constraints' => [
+                    new GreaterThan([
+                        'value' => 0,
+                        'message' => 'Le prix d\'achat doit être supérieur à zéro.',
+                    ]),
+                ],
                 'attr' => [
                     'style' => 'background: #fff; border-radius: 15px; margin-top: 10px; margin-bottom: 10px;',
                     'class' => 'form-control place-color',
                     'placeholder' => 'Prix d\'achat'
                 ]
             ])
-            ->add('prix_vente', NumberType::class, [
+            ->add('prix_vente', MoneyType::class, [
+                'currency' => false,
+                'constraints' => [
+                    new GreaterThan([
+                        'value' => 0,
+                        'message' => 'Le prix de vente doit être supérieur à zéro.',
+                    ]),
+                ],
                 'attr' => [
                     'style' => 'background: #fff; border-radius: 15px;',
                     'class' => 'form-control place-color',

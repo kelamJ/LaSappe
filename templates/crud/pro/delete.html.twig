@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'Supprimer la catégorie: ' ~ categorie.catNom }}
+    {{ 'Supprimer le produit: ' ~ produit.proNom }}
 {% endblock %}
 
 {% block body %}
     <h1 style="text-align: center">Supprimer la catégorie</h1>
-    <p style="text-align: center">Voulez-vous vraiment supprimer la catégorie "{{ categorie.catNom }}" ?</p>
+    <p style="text-align: center">Voulez-vous vraiment supprimer le produit "{{ produit.proNom }}" ?</p>
     <div class="container" style="display: flex; justify-content: center;">
         <form method="post">
             <button class="button" type="submit">Supprimer</button>
         </form>
 
-        <button class="button"> <a style="color: white" href="{{ path('crud_read', {'id': categorie.id})}}">Annuler</a>
+        <button class="button"> <a style="color: white" href="{{ path('crud_readPro', {'id': produit.id})}}">Annuler</a>
         </button>
     </div>
 {% endblock %}

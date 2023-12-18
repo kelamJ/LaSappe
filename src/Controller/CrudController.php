@@ -23,7 +23,7 @@ class CrudController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[Route('/read/{id}', name: 'read')]
+    #[Route('/readCat/{id}', name: 'readCat')]
     public function readCat(int $id): Response
     {
         $repository = $this->entityManager->getRepository(Categorie::class);
@@ -38,7 +38,7 @@ class CrudController extends AbstractController
         ]);
     }
 
-    #[Route('/addCat', name: 'add')]
+    #[Route('/addCat', name: 'addCat')]
     public function createCat(Request $request): Response
     {
         $categorie = new Categorie();
@@ -64,7 +64,7 @@ class CrudController extends AbstractController
             $this->entityManager->persist($categorie);
             $this->entityManager->flush();
 
-            return $this->redirectToRoute('crud_read', ['id' => $categorie->getId()]);
+            return $this->redirectToRoute('crud_readCat', ['id' => $categorie->getId()]);
         }
 
         return $this->render('crud/cat/create.html.twig', [
@@ -72,7 +72,7 @@ class CrudController extends AbstractController
         ]);
     }
 
-    #[Route('/update/{id}', name: 'update')]
+    #[Route('/updateCat/{id}', name: 'updateCat')]
     public function updateCat(Request $request, int $id): Response
     {
         $categorie = $this->entityManager->getRepository(Categorie::class)->find($id);
@@ -121,7 +121,7 @@ class CrudController extends AbstractController
 
             $this->entityManager->flush();
 
-            return $this->redirectToRoute('crud_read', ['id' => $categorie->getId()]);
+            return $this->redirectToRoute('crud_readCat', ['id' => $categorie->getId()]);
         }
 
         return $this->render('crud/cat/update.html.twig', [
@@ -130,7 +130,7 @@ class CrudController extends AbstractController
         ]);
     }
 
-    #[Route('/delete/{id}', name: 'delete')]
+    #[Route('/deleteCat/{id}', name: 'deleteCat')]
     public function deleteCat(Request $request, int $id): Response
     {
         $categorie = $this->entityManager->getRepository(Categorie::class)->find($id);
@@ -204,6 +204,96 @@ class CrudController extends AbstractController
 
         return $this->render('crud/pro/create.html.twig', [
             'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/updatePro/{id}', name: 'updatePro')]
+    public function updatePro(Request $request, int $id): Response
+    {
+        $produit = $this->entityManager->getRepository(Produit::class)->find($id);
+
+        if (!$produit) {
+            throw $this->createNotFoundException('Le produit avec l\'ID ' . $id . ' n\'existe pas.');
+        }
+        $currentImage = $produit->getImage();
+
+        $form = $this->createForm(ProduitType::class, $produit);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Générez un nouveau nom de fichier unique pour l'image
+            $newProImage = $form['image']->getData();
+            if ($newProImage) {
+                $newFilename = uniqid().'.'.$newProImage->guessExtension();
+                try {
+                    // Déplacez la nouvelle image vers le répertoire approprié
+                    $newProImage->move(
+                        $this->getParameter('produit_images_directory'),
+                        $newFilename
+                    );
+
+                    // Mettez à jour le nom de fichier dans l'entité
+                    $produit->setImage($newFilename);
+
+                    // Supprimez l'ancienne image si elle existe
+                    if ($currentImage) {
+                        unlink($this->getParameter('produit_images_directory').'/'.$currentImage);
+                    }
+                } catch (FileException $e) {
+                    // Gestion des erreurs si le déplacement échoue, possibilité d'ajouter du code pour ajuster l'erreur
+                }
+            }
+
+            // Mettez à jour la relation  avec la catégorie
+            $categorie = $form['categorie']->getData();
+            $produit->setCategorie($categorie);
+
+            // Mettez à jour la relation ManyToOne avec le fournisseur
+            $fournisseur = $form['fournisseur']->getData();
+            $produit->setFournisseur($fournisseur);
+
+            // Mettez à jour d'autres propriétés
+            $produit->setProNom($form['pro_nom']->getData());
+            $produit->setProDescription($form['pro_description']->getData());
+            $produit->setProStock($form['pro_stock']->getData());
+            $produit->setPrixAchat($form['prix_achat']->getData());
+            $produit->setPrixVente($form['prix_vente']->getData());
+
+
+            $this->entityManager->flush();
+
+            return $this->redirectToRoute('crud_readPro', ['id' => $produit->getId()]);
+        }
+
+        return $this->render('crud/pro/update.html.twig', [
+            'form' => $form->createView(),
+            'produit' => $produit,
+        ]);
+    }
+
+    #[Route('/deletePro/{id}', name: 'deletePro')]
+    public function deletePro(Request $request, int $id): Response
+    {
+        $produit = $this->entityManager->getRepository(Produit::class)->find($id);
+
+        if (!$produit) {
+            throw $this->createNotFoundException('La catégorie avec l\'ID ' . $id . ' n\'existe pas.');
+        }
+
+        if ($request->isMethod('POST')) {
+            // Si le formulaire a été soumis, supprimez l'entité de la base de données
+            $this->entityManager->remove($produit);
+            $this->entityManager->flush();
+
+            $this->addFlash('success', 'Le produit a été supprimée avec succès.');
+
+            return $this->redirectToRoute('catalogue'); // Redirigez vers la page d'accueil ou une autre page
+            // appropriée.
+        }
+
+        return $this->render('crud/pro/delete.html.twig', [
+            'produit' => $produit,
         ]);
     }
 }

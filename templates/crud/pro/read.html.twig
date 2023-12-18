@@ -59,9 +59,17 @@
         </tr>
     </div>
 
-{#    <a href="{{ path('crud_updatePro', { 'id': produit.id }) }}">Modifier le produit</a>#}
-{#    <a href="{{ path('crud_deletePro', { 'id': produit.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')">Supprimer le produit</a>#}
-    <button class="button">
+    <div style="display: flex; justify-content: center" >
+    <button style="width: 8rem" class="button">
+        <a href="{{ path('crud_updatePro', { 'id': produit.id }) }}">Modifier</a>
+    </button>
+
+    <button style="width: 8rem" class="button">
+        <a href="{{ path('crud_deletePro', { 'id': produit.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')">Supprimer</a>
+    </button>
+
+    <button style="width: 8rem" class="button">
         <a href="{{ path('catalogue') }}">Retour</a>
     </button>
+    </div>
 {% endblock %}
